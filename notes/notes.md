@@ -110,7 +110,7 @@ Link component navigation
 - Can link to routes within pages 
 ```js
 import Link from 'next/link'
-<Link href="/>
+<Link href=""/>
     <a>Home</a>
 </Link>
 ```
@@ -189,3 +189,46 @@ Pre-rendering
 # 16
 https://www.youtube.com/watch?v=keP1PygtJ8c&list=PLC3y8-rFHvwgC9mj0qv972IO5DmD-H0ZH&index=16
 Static generation
+- HTML pages generated at build time. Page can be built once, cached by a CDN, and served to the client almost instantly.
+- NextJS by default pre-renders every page in the app.
+- **Prod Server**: An optimized build is created once and you deploy that build. You don't make code changes on the go once it is deployed.
+- **Dev Server**: We should be able to make changes in our code and we want that code to immediately reflect in the browser.
+- For production builds, the page will be pre-rendered once when we run the build command.
+- For development mode, the page is pre-rendered for every request you make.
+
+
+# 17
+https://www.youtube.com/watch?v=7UouvxZ6OaM&list=PLC3y8-rFHvwgC9mj0qv972IO5DmD-H0ZH&index=17
+Static Generation with getStaticProps
+- generating html after fetching external data (e.g. waiting for and fetching data for an api)
+- 
+```js
+
+function UserList({ users}) {
+    return (
+        {users.map((user) => {
+            return (
+                <p>{user.email}</p>
+            )
+        })}
+    )
+
+}
+
+export async function getStaticProps(){
+    const response = await fetch("")
+    const data = await response.json()
+
+    return {
+        props: {
+            users: data,
+        }
+    }
+}
+```
+
+# 18
+https://www.youtube.com/watch?v=OYzrF4wuDKs&list=PLC3y8-rFHvwgC9mj0qv972IO5DmD-H0ZH&index=18
+Pages vs components
+- components should go in the componenets folder, not pages folder
+- 
